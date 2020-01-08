@@ -1,0 +1,26 @@
+<h2 class="sub-header">编辑标签</h2>
+<div class="table-responsive">
+    <form #subForm='ngForm' (submit)='saveTag()'>
+        <div class="form-group">
+          <label for="exampleInputEmail1">标签名称</label>
+          <input 
+          type="text" 
+          class="form-control" 
+          id="exampleInputEmail1" 
+          placeholder="title"
+          required
+          name='title'
+          [(ngModel)]='tag.title'
+          #title='ngModel'
+          >
+          <div *ngIf='title.invalid&&(title.dirty||title.touched)' class="alert alert-danger">
+            <div *ngIf='title.errors.required'>
+              标签名必须输入
+            </div>
+          </div>
+        </div>
+        <button [disabled]='!subForm.form.valid' type="submit" class="btn btn-info">保存</button>
+      </form>
+</div>
+    
+

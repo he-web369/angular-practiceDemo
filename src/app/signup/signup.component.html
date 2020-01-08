@@ -1,0 +1,53 @@
+<div class="container">
+    <form #Onefrom='ngForm' (submit)='signUp()' class="form-signin">
+      <h2 class="form-signin-heading">Please sign up</h2>
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input 
+      #email='ngModel' 
+      [(ngModel)]='signUpForm.email' 
+      [ngModelOptions]="{standalone: true}" 
+      type="email" 
+      id="inputEmail" 
+      class="form-control" 
+      placeholder="Email address"
+      email='true'
+      required
+      >
+      <div *ngIf='email.invalid&&(email.dirty||email.touched)' class="alert alert-danger">
+        <div *ngIf='email.errors.required'>
+          email is required
+        </div>
+        <div *ngIf='email.errors.email'>
+          invalid email.
+        </div>
+      </div>
+      <div *ngIf='email_err_msg' class="alert alert-danger">
+        {{email_err_msg}}
+      </div>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input 
+      [(ngModel)]='signUpForm.password' 
+      [ngModelOptions]="{standalone: true}" 
+      type="password" id="inputPassword" 
+      minlength="6"
+      class="form-control" 
+      placeholder="Password" 
+      required
+      #password='ngModel'
+      maxlength="12"
+      >
+      <div *ngIf='password.invalid&&(password.dirty||password.touched)' class="alert alert-danger">
+        <div *ngIf='password.errors.required'>
+          password is required
+        </div>
+        <div *ngIf='password.errors.minlength'>
+          password at least 6 chartracters.
+        </div>
+        <div *ngIf='password.errors.maxlength'>
+          password most 12 chartracters maxlength
+        </div>
+      </div>
+      <button [disabled]='!Onefrom.form.valid' class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    </form>
+    <p class="info"><a routerLink="/signin">Already have an account? Login here.</a></p>
+</div>

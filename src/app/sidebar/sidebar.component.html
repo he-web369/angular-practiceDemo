@@ -1,0 +1,8 @@
+<div class="col-sm-3 col-md-2 sidebar">
+  <ul class="nav nav-sidebar">
+    <li [ngClass]="{active:classState==='contacts'}" (click)='changeClass("contacts")'><a routerLink="/contacts">联系人管理</a></li>
+    <li [ngClass]="{active:classState==='tags'}"  (click)='changeClass("tags")' ><a routerLink="/tags">标签管理</a></li>
+    <li [ngClass]="{active:classState==='about'}"  (click)='changeClass("about")'><a href="javascript:;">关于</a></li>
+  </ul>
+</div>
+

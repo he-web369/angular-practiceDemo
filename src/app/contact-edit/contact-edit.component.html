@@ -1,0 +1,46 @@
+<h2 class="sub-header">编辑联系人</h2>
+<div  class="table-responsive">
+  <form (submit)='editingContact()'>
+    <div class="form-group">
+      <label for="exampleInputEmail1">姓名</label>
+      <input 
+      type="text" 
+      class="form-control" 
+      id="exampleInputEmail1" 
+      placeholder="name"
+      [(ngModel)]='formData.name'
+      name='name'
+      >
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">邮箱</label>
+      <input 
+      type="email" 
+      class="form-control" 
+      id="exampleInputEmail2" 
+      placeholder="Email"
+      [(ngModel)]='formData.email'
+      name='email'
+      >
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">电话</label>
+      <input 
+      type="text" 
+      class="form-control" 
+      id="exampleInputPassword1" 
+      placeholder="phone"
+      [(ngModel)]='formData.phone'
+      name='phone'
+      >
+    </div>
+    <div class="form-group">
+      <p style="font-weight: bold;">标签</p>
+      <select [(ngModel)]='formData.value' name='value' >
+        <option *ngFor='let item of tags' [value]="item.title">{{item.title}}</option>
+      </select>
+    </div>
+    <button  type="submit" class="btn btn-info">更改</button>
+  </form>
+</div>
+    

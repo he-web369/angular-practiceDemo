@@ -1,0 +1,68 @@
+<h2 class="sub-header">新增联系人</h2>
+<form #subForm='ngForm' (submit)='addContact()'>
+  <div class="form-group">
+    <label for="exampleInputEmail1">姓名</label>
+    <input 
+    type="text" 
+    class="form-control" 
+    id="exampleInputEmail1" 
+    placeholder="name"
+    [(ngModel)]='formData.name'
+    name='name'
+    #name='ngModel'
+    required
+    >
+    <div *ngIf='name.invalid&&(name.dirty||name.touched)' class="alert alert-danger">
+      <div *ngIf='name.errors.required'>
+        name is required
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">邮箱</label>
+    <input 
+    type="email" 
+    class="form-control" 
+    id="exampleInputEmail2" 
+    placeholder="Email"
+    [(ngModel)]='formData.email'
+    name='email'
+    email='true'
+    required
+    #email='ngModel'
+    >
+    <div *ngIf='email.invalid&&(email.dirty||email.touched)' class="alert alert-danger">
+      <div *ngIf='email.errors.required'>
+        email is required
+      </div>
+      <div *ngIf='email.errors.email'>
+        invalid email.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">电话</label>
+    <input 
+    type="text" 
+    class="form-control" 
+    id="exampleInputPassword1" 
+    placeholder="phone"
+    [(ngModel)]='formData.phone'
+    name='phone'
+    required
+    #phone='ngModel'
+    >
+    <div class="alert alert-danger" *ngIf='phone.invalid&&(phone.dirty||phone.touched)'>
+      <div *ngIf='phone.errors.required'>
+        phone is required
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <p style="font-weight: bold;">标签</p>
+    <select [(ngModel)]='formData.value' name='value' >
+      <option *ngFor='let item of tags' [value]="item.title">{{item.title}}</option>
+    </select>
+  </div>
+  <button type="submit" [disabled]='!subForm.form.valid' class="btn btn-info" >创建</button>
+</form>
